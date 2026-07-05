@@ -10,7 +10,7 @@
   align-items: start;
   flex-wrap: wrap;
   gap: var(--space-6);
-  padding: var(--space-8) 0 var(--space-6);
+  padding: var(--space-8) 0 var(--space-8);
 }
 
 .footer__brand {
@@ -37,9 +37,11 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
+/* Now holds 4 columns (Explore, Stay Updated, Contact, Follow Us)
+   instead of 3 - see Footer.jsx for the restored Explore column. */
 .footer__links {
   display: flex;
-  flex: 2 1 480px;
+  flex: 3 1 620px;
   justify-content: space-between;
   gap: var(--space-6);
 }
@@ -73,6 +75,64 @@
   color: #ffffff;
 }
 
+/* Newsletter capture column */
+.footer__col--newsletter {
+  flex: 1.4 1 auto;
+  min-width: 220px;
+}
+
+.footer__newsletter-copy {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: -4px;
+}
+
+.footer__newsletter {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.footer__newsletter input {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  transition: border-color var(--transition-fast);
+}
+
+.footer__newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__newsletter input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.footer__newsletter-btn {
+  flex-shrink: 0;
+  width: 38px;
+  background: var(--color-accent);
+  color: var(--color-navy-deep);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer__newsletter-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
 .footer__col--contact .footer__contact-item {
   display: flex;
   align-items: center;
@@ -90,8 +150,6 @@ a.footer__contact-item:hover {
   color: #ffffff;
 }
 
-/* Social icons live in their own column within .footer__links (flex,
-   space-between) instead of stacked under the tagline. */
 .footer__col--social {
   align-items: flex-start;
 }
@@ -128,9 +186,7 @@ a.footer__contact-item:hover {
   padding: var(--space-4) 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-3);
+  justify-content: center;
 }
 
 .footer__bottom p {
@@ -145,21 +201,6 @@ a.footer__contact-item:hover {
   color: var(--color-accent);
 }
 
-.footer__bottom-links {
-  display: flex;
-  gap: var(--space-5);
-}
-
-.footer__bottom-links a {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.55);
-  transition: color var(--transition-fast);
-}
-
-.footer__bottom-links a:hover {
-  color: #ffffff;
-}
-
 @media (max-width: 768px) {
   .footer__links {
     flex-wrap: wrap;
@@ -169,6 +210,7 @@ a.footer__contact-item:hover {
     flex: 1 1 45%;
   }
 
+  .footer__col--newsletter,
   .footer__col--social {
     flex: 1 1 100%;
   }

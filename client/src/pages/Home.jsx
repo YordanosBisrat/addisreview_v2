@@ -28,7 +28,7 @@ export default function Home() {
     try {
       const [categoriesData, businessesResult] = await Promise.all([
         getCategories(),
-        getBusinesses({ limit: 30 }), // bumped from 20 so every seeded business is available for the hero slideshow
+        getBusinesses({ limit: 30 }),
       ]);
       setCategories(categoriesData);
       setTotalBusinesses(businessesResult.pagination.total);
@@ -37,12 +37,18 @@ export default function Home() {
 
       // "Featured" = top 6 businesses by average rating
       const sorted = [...businesses].sort((a, b) => b.average_rating - a.average_rating);
-      setFeatured(sorted.slice(0, 6));
+      const topSix = sorted.slice(0, 6);
+      setFeatured(topSix);
 
-      // Hero background rotates through every business photo, each one
-      // captioned with that business's category name.
+      // Hero background now rotates through the SAME curated top 6 used
+      // for "Featured Businesses" below, instead of all 30 fetched
+      // businesses. A slideshow cycling through the entire catalog reads
+      // as "we had the data so we used it," not a deliberate choice - and
+      // it competed for attention with the search bar sitting on top of
+      // it. Reusing topSix also means there's only one "which businesses
+      // are we highlighting" concept in this component, not two.
       setSlides(
-        businesses.map((b) => ({
+        topSix.map((b) => ({
           id: b.id,
           image: b.image_url,
           category: b.category_name,

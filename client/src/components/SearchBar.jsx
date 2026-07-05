@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import './SearchBar.css';
 
-export default function SearchBar({ placeholder = 'Search for restaurants, cafés, hotels...' }) {
+// Shorter default placeholder so it doesn't get clipped mid-word inside
+// the hero search input on smaller viewports (see SearchBar.css for the
+// accompanying max-width bump + ellipsis fallback).
+export default function SearchBar({ placeholder = 'Search businesses' }) {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 

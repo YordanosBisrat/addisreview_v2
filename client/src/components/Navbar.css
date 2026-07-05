@@ -89,10 +89,12 @@
   gap: var(--space-4);
 }
 
+/* border-radius override removed - .btn now defaults to var(--radius-sm)
+   globally (see global.css), so this button matches every other primary
+   button in the app without needing its own copy of the rule. */
 .btn.navbar__signup {
   padding: 9px 20px;
   font-size: 0.85rem;
-  border-radius: var(--radius-sm);
 }
 
 .navbar__account {
