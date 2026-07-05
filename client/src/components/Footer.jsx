@@ -18,9 +18,7 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const { showToast } = useToast();
 
-  // NOTE: there's no real subscribe endpoint yet - this confirms interest
-  // and gives the user feedback, but doesn't persist the email anywhere.
-  // Wire this up to a real POST /api/subscribe (or similar) when one exists.
+  
   function handleNewsletterSubmit(e) {
     e.preventDefault();
     if (!email.trim()) return;
@@ -41,8 +39,6 @@ export default function Footer() {
         </div>
 
         <div className="footer__links">
-          {/* Restored - the newsletter column swap earlier had dropped
-              the site's only footer navigation entirely. */}
           <div className="footer__col footer__col--explore">
             <h4>Explore</h4>
             <Link to="/">Home</Link>

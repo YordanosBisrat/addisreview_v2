@@ -13,9 +13,7 @@ export function AuthProvider({ children }) {
   });
   const [loading, setLoading] = useState(true);
 
-  // On first load, if a token exists, verify it's still valid by fetching
-  // the current user - this catches expired tokens instead of trusting
-  // whatever was last cached in localStorage.
+  
   useEffect(() => {
     const token = localStorage.getItem(TOKEN_STORAGE_KEY);
     if (!token) {
@@ -29,7 +27,6 @@ export function AuthProvider({ children }) {
         localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(freshUser));
       })
       .catch(() => {
-        // Token expired or invalid - clear the stale session
         localStorage.removeItem(TOKEN_STORAGE_KEY);
         localStorage.removeItem(USER_STORAGE_KEY);
         setUser(null);

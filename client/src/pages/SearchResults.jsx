@@ -25,7 +25,6 @@ export default function SearchResults() {
     setLoading(true);
     setError(null);
     try {
-      // Empty query -> browse everything; otherwise hit the search endpoint
       const result = query.trim()
         ? await searchBusinesses(query.trim(), { page: 1, limit: PAGE_SIZE })
         : await getBusinesses({ page: 1, limit: PAGE_SIZE });
@@ -43,12 +42,10 @@ export default function SearchResults() {
     window.scrollTo(0, 0);
   }, [loadData]);
 
-  // Keep the input in sync if the URL changes externally (e.g. navbar search)
   useEffect(() => {
     setInputValue(query);
   }, [query]);
 
-  // Live search: debounce updates to the URL as the user types
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (inputValue.trim() !== query.trim()) {
@@ -56,7 +53,6 @@ export default function SearchResults() {
       }
     }, 350);
     return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue]);
 
   async function handleLoadMore() {

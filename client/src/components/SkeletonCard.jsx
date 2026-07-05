@@ -1,10 +1,5 @@
 import './SkeletonCard.css';
 
-/**
- * Lightweight animated placeholder shown while a card grid is loading,
- * so the layout doesn't jump once real content arrives (and it reads
- * as "content is coming" rather than a blank spinner over the page).
- */
 export default function SkeletonCard({ variant = 'business' }) {
   if (variant === 'category') {
     return (

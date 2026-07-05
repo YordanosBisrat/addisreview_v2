@@ -10,7 +10,6 @@ import { getCategories } from '../services/categoryService';
 import { getBusinesses } from '../services/businessService';
 import './Home.css';
 
-// How long each hero background photo stays up before crossfading to the next
 const SLIDE_DURATION_MS = 5500;
 
 export default function Home() {
@@ -35,18 +34,10 @@ export default function Home() {
 
       const businesses = businessesResult.businesses;
 
-      // "Featured" = top 6 businesses by average rating
       const sorted = [...businesses].sort((a, b) => b.average_rating - a.average_rating);
       const topSix = sorted.slice(0, 6);
       setFeatured(topSix);
 
-      // Hero background now rotates through the SAME curated top 6 used
-      // for "Featured Businesses" below, instead of all 30 fetched
-      // businesses. A slideshow cycling through the entire catalog reads
-      // as "we had the data so we used it," not a deliberate choice - and
-      // it competed for attention with the search bar sitting on top of
-      // it. Reusing topSix also means there's only one "which businesses
-      // are we highlighting" concept in this component, not two.
       setSlides(
         topSix.map((b) => ({
           id: b.id,
@@ -65,9 +56,7 @@ export default function Home() {
     loadData();
   }, []);
 
-  // Advance the hero slideshow on a timer once slides are loaded. Depends
-  // on slides.length (not the array itself) so the interval isn't torn
-  // down and rebuilt on every render.
+  
   useEffect(() => {
     if (slides.length < 2) return undefined;
     const timer = setInterval(() => {

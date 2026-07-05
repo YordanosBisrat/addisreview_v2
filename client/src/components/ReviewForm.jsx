@@ -17,9 +17,7 @@ export default function ReviewForm({ businessId, onReviewSubmitted }) {
   const { isAuthenticated, user } = useAuth();
   const location = useLocation();
 
-  // Reviews require an account - this is what fixes the "anyone can post
-  // as anyone" gap: the author is always the logged-in user, never a
-  // free-text name typed into the form.
+
   if (!isAuthenticated) {
     return (
       <div className="review-form review-form--locked card">

@@ -14,13 +14,7 @@ const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ------------------------------------------------------------------
-// If the database hasn't been seeded yet, seed it automatically so the
-// app works right after `npm install` with no extra manual step.
-// (better-sqlite3 creates an empty file the moment it's opened, so we
-// detect "first run" by checking whether our tables exist yet, not by
-// checking for the file itself.)
-// ------------------------------------------------------------------
+
 const hasTables = db
   .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'categories'")
   .get();
@@ -38,9 +32,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serves anything dropped into server/uploads at /uploads/<filename>.
-// Not wired to a real upload endpoint yet (see README "Known Limitations"),
-// but this is the hook a future image-upload feature would plug into
-// instead of hotlinking to an external image CDN.
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Simple request logger (kept lightweight - no extra dependency needed)

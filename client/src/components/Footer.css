@@ -10,7 +10,10 @@
   align-items: start;
   flex-wrap: wrap;
   gap: var(--space-6);
-  padding: var(--space-8) 0 var(--space-8);
+}
+
+.footer .footer__inner {
+  padding: calc(var(--space-6) * 2) 0 calc(var(--space-6) * 2);
 }
 
 .footer__brand {
@@ -37,8 +40,6 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
-/* Now holds 4 columns (Explore, Stay Updated, Contact, Follow Us)
-   instead of 3 - see Footer.jsx for the restored Explore column. */
 .footer__links {
   display: flex;
   flex: 3 1 620px;
@@ -75,7 +76,6 @@
   color: #ffffff;
 }
 
-/* Newsletter capture column */
 .footer__col--newsletter {
   flex: 1.4 1 auto;
   min-width: 220px;
@@ -183,10 +183,13 @@ a.footer__contact-item:hover {
 
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: var(--space-4) 0;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footer .footer__bottom {
+  padding: calc(var(--space-3) * 2) 0;
 }
 
 .footer__bottom p {

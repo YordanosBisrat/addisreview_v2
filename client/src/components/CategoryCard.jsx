@@ -13,7 +13,6 @@ import {
 } from 'react-icons/fa';
 import './CategoryCard.css';
 
-// Maps the icon key stored in the DB to an actual react-icons component
 const ICON_MAP = {
   FaUtensils,
   FaMugHot,

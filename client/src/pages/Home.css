@@ -9,9 +9,6 @@
   text-align: center;
 }
 
-/* Stacked full-bleed photos behind the hero content. All slides are
-   mounted at once and crossfade via opacity - simplest way to get a
-   flicker-free transition without juggling image-swap timing. */
 .hero__background {
   position: absolute;
   inset: 0;
@@ -37,9 +34,6 @@
   background: linear-gradient(180deg, rgba(22, 40, 61, 0.6) 0%, rgba(22, 40, 61, 0.82) 100%);
 }
 
-/* Category caption for whichever photo is currently showing. Remounted
-   via a `key` on the slide index in Home.jsx, so this fade-in animation
-   replays every time the slide changes. */
 .hero__category-badge {
   position: absolute;
   top: var(--space-5);

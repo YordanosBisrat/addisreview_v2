@@ -2,13 +2,6 @@ import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import './StarRating.css';
 
-/**
- * Dual-purpose star rating component.
- * - Read-only mode: pass `value` (can be fractional, e.g. 4.3) to display an average.
- * - Interactive mode: pass `interactive` + `onChange` for the review form.
- *   Uses radiogroup/radio ARIA roles so screen readers announce it as a
- *   single choice of 1-5, matching how it behaves visually and by keyboard.
- */
 export default function StarRating({
   value = 0,
   onChange,

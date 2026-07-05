@@ -51,7 +51,6 @@ export default function BusinessDetails() {
     setReviewsPagination((current) =>
       current ? { ...current, total: current.total + 1 } : current
     );
-    // Refresh business data so the average rating / distribution stay in sync
     getBusinessById(id).then(setBusiness).catch(() => {});
   }
 
