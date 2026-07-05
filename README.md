@@ -75,7 +75,7 @@ REST API backend**, backed by a normalized **SQLite** database
 
 **Tooling**
 - Git for version control
-- Plain JavaScript throughout (no TypeScript, per project requirements)
+- Plain JavaScript throughout (no TypeScript)
 
 ---
 
